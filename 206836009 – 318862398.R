@@ -1,2 +1,4 @@
 library(ggplot2)
-dataset = read.csv(file = "")
+dataset = read.csv(file = "dataset.csv")
+
+qqplot(dataset$Followers, )
