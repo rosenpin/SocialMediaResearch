@@ -1,5 +1,5 @@
 library(ggplot2)
 dataset = read.csv(file = "dataset.csv")
 
-qqplot(dataset$Followers, )
-
+ratio <- dataset$Engagement.ratio
+hist(dnorm(ratio))
