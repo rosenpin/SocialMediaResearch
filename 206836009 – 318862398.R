@@ -43,6 +43,9 @@ smaller_music_ratio <- dataset$Engagement.ratio[dataset$category_1 == "Music" & 
 #Calculating standard deviation for both groups
 sd_bigger <- sd(bigger_music_ratio)
 sd_smaller <- sd(smaller_music_ratio)
+sd_est <- sqrt((sd_bigger*length(bigger_music_ratio)+sd_smaller*length(smaller_music_ratio))/(length(smaller_music_ratio)+length(bigger_music_ratio)-2))
+se_est <- sd_est*sqrt(1/length(bigger_music_ratio)+1/length(smaller_music_ratio))
+print(se_est)
 #Creating dataframe for tests
 a <- data.frame(values = bigger_music_ratio, groups = rep("Big", length(bigger_music_ratio)))
 b <- data.frame(values = smaller_music_ratio,groups = rep("Small", length(smaller_music_ratio)))
@@ -59,10 +62,13 @@ boxplot(data.for.test2$values ~ data.for.test2$groups, xlab='Accounts', ylab='En
 bartlett.test(data.for.test2$values ~ data.for.test2$groups, data = data.for.test2)
 
 ##  Normality
-#QQplot visual test
+#QQplot and histogram visual test
 ggqqplot(data.for.test2$values)
+hist(data.for.test2$values, breaks = 80)
 #Shapiro-wilk test
 shapiro.test(data.for.test2$values)
 
+
 ### Preforming T test
-t.test(bigger_music_ratio, smaller_music_ratio)
+qt(.95,232)
+t.test(bigger_music_ratio, smaller_music_ratio, var.equal = TRUE)
