@@ -30,4 +30,4 @@ boxplot(values ~ groupings, xlab='Countries', ylab='Engagment', data=data.for.te
 bartlett.test(values ~ groupings, data=data.for.test)
 
   ##Preforming Levene test (F test for multiple groups)
-leveneTest(values, groupings, data = data.for.test, center = mean)
+leveneTest(values, as.factor(groupings), data = data.for.test, center = mean)
