@@ -75,6 +75,8 @@ t.test(ratio_music_bigger, ratio_music_smaller, var.equal = TRUE)
 #finding mean values for both groups
 mean_bigger <- mean(ratio_music_bigger)
 mean_smaller <- mean(ratio_music_smaller)
+#estimating standard error 
+se_est <- sd_est*sqrt(1/length(ratio_music_bigger)+1/length(ratio_music_smaller))
 #calculating d
 cohens_d <- (mean_bigger - mean_smaller)/se_est
 print(cohens_d)
