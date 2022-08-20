@@ -36,10 +36,10 @@ leveneTest(values, as.factor(groupings), data = data.for.test, center = mean)
 ####      Question Three
 
 #finding mean followers count
-mean_music_followers <- mean(dataset$Followers)
+mean_followers <- mean(dataset$Followers)
 #Getting engagement ratios for bigger and smaller accounts
-ratio_music_bigger <- dataset$Engagement.ratio[dataset$category_1 == "Music" & dataset$Followers > mean_music_followers]
-ratio_music_smaller <- dataset$Engagement.ratio[dataset$category_1 == "Music" & dataset$Followers <= mean_music_followers]
+ratio_music_bigger <- dataset$Engagement.ratio[dataset$category_1 == "Music" & dataset$Followers > mean_followers]
+ratio_music_smaller <- dataset$Engagement.ratio[dataset$category_1 == "Music" & dataset$Followers <= mean_followers]
 #Calculating standard deviation for both groups and estimating standard error
 sd_bigger <- sd(ratio_music_bigger)
 sd_smaller <- sd(ratio_music_smaller)
